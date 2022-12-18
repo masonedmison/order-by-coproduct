@@ -51,9 +51,10 @@ lazy val orderShapeless = (project in file("order-shapeless"))
   .settings(
     commonSettings,
     libraryDependencies ++= Seq(
-      "com.chuusai" %% "shapeless" % Versions.shapeless,
-      "org.typelevel" %% "cats-core" % Versions.cats,
-      "org.scalameta" %% "munit" % "0.7.29" % Test
+      "com.chuusai"    %% "shapeless"    % Versions.shapeless,
+      "org.typelevel"  %% "cats-core"    % Versions.cats,
+      "org.scala-lang" % "scala-reflect" % scalaVersion.value,
+      "org.scalameta"  %% "munit"        % "0.7.29" % Test
     )
   )
 
