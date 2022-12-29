@@ -21,25 +21,27 @@ ThisBuild / githubWorkflowEnv ++= List(
   "SONATYPE_USERNAME"
 ).map(envKey => envKey -> s"$${{ secrets.$envKey }}").toMap
 
-
-inThisBuild(List(
-  organization := "io.github.masonedmison",
-  licenses := List("Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
-  sonatypeCredentialHost := "s01.oss.sonatype.org",
-  sonatypeRepository := "https://s01.oss.sonatype.org/service/local",
-  developers := List(
-    Developer(
-      "mason.edmison",
-      "Mason Lazalier Edmison",
-      "mason.edmison@gmail.com",
-      url("https://github.com/masonedmison")
-    )
-  ),
-  versionScheme := Some("early-semver")
-))
+inThisBuild(
+  List(
+    organization := "io.github.masonedmison",
+    licenses := List("Apache-2.0" -> new URL("http://www.apache.org/licenses/LICENSE-2.0")),
+    startYear := Some(2022),
+    sonatypeCredentialHost := "s01.oss.sonatype.org",
+    sonatypeRepository := "https://s01.oss.sonatype.org/service/local",
+    developers := List(
+      Developer(
+        "mason.edmison",
+        "Mason Lazalier Edmison",
+        "mason.edmison@gmail.com",
+        url("https://github.com/masonedmison")
+      )
+    ),
+    versionScheme := Some("early-semver")
+  )
+)
 val Versions = new {
   val shapeless = "2.3.10"
-  val cats = "2.9.0"
+  val cats      = "2.9.0"
 }
 
 val commonSettings: Seq[Setting[_]] = Seq(
@@ -62,4 +64,3 @@ val root = project
   .in(file("."))
   .settings(publish := {}, publish / skip := true)
   .aggregate(orderShapeless)
-
